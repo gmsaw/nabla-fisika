@@ -1,3 +1,192 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    color-scheme: dark;
+    scroll-behavior: smooth;
+}
+html:not(.dark) { color-scheme: light; }
+
+body { overflow-x: hidden; }
+
+/* ===== BACKGROUND ===== */
+.bg-grid {
+    background-image:
+        linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+.dark .bg-grid {
+    background-image:
+        linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+}
+.bg-grid-mask {
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+}
+.bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* ===== LINK UNDERLINE ===== */
+.link-underline { position: relative; }
+.link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    width: 0; height: 1px;
+    background: currentColor;
+    transition: width 0.3s;
+}
+.link-underline:hover::after { width: 100%; }
+
+/* ===== MARQUEE ===== */
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+}
+.marquee-wrapper:hover .marquee-track {
+    animation-play-state: paused;
+}
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* =========================================================
+   ROCKET — SVG Motion Path
+   ========================================================= */
+   .rocket-trail {
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(59, 130, 246, 0.05) 15%,
+        rgba(59, 130, 246, 0.35) 45%,
+        rgba(251, 191, 36, 0.5) 65%,
+        rgba(249, 115, 22, 0.75) 85%,
+        transparent 100%);
+    filter: blur(3px);
+    border-radius: 999px;
+    opacity: 0;
+    animation: trail-reveal 6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    transform-origin: left center;
+}
+
+@keyframes trail-reveal {
+    0%   { opacity: 0; transform: scaleX(0); }
+    8%   { opacity: 1; transform: scaleX(1); }
+    92%  { opacity: 1; transform: scaleX(1); }
+    100% { opacity: 0; transform: scaleX(1); }
+}
+
+/* Roket wrapper — posisi absolute, SVG motion di dalamnya */
+.rocket-motion {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+}
+
+/* Api roket berkedip */
+@keyframes flame-flicker {
+    0%, 100% { transform: scaleY(1) scaleX(1); opacity: 0.95; }
+    25%      { transform: scaleY(1.15) scaleX(0.9); opacity: 1; }
+    50%      { transform: scaleY(0.9) scaleX(1.1); opacity: 0.85; }
+    75%      { transform: scaleY(1.1) scaleX(0.95); opacity: 1; }
+}
+.rocket-flame {
+    transform-origin: top center;
+    animation: flame-flicker 0.15s ease-in-out infinite;
+}
+
+/* Ekor asap/partikel */
+@keyframes smoke-fade {
+    0%   { opacity: 0.6; transform: scale(0.5); }
+    100% { opacity: 0; transform: scale(1.8); }
+}
+.rocket-smoke {
+    animation: smoke-fade 1.2s ease-out infinite;
+}
+
+/* Fallback animasi lama (tidak dipakai jika SVG motion aktif) */
+@keyframes rocket-fly-fallback {
+    0%   { left: -5%; transform: translateY(-50%) rotate(-10deg); }
+    95%  { left: 100%; transform: translateY(-50%) rotate(-10deg); }
+    100% { left: 105%; transform: translateY(-50%) rotate(-10deg); }
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ===== SPIN ===== */
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+.animate-spin-slow { animation: spin-slow 24s linear infinite; }
+.animate-spin-slower { animation: spin-slow 40s linear infinite; }
+
+/* ===== BLINK ===== */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+.animate-blink { animation: blink 1s step-end infinite; }
+
+/* ===== TWINKLE (bintang) ===== */
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+.animate-twinkle { animation: twinkle 3s ease-in-out infinite; }
+
+/* ===== FLOAT SOFT (astronaut) ===== */
+@keyframes float-soft {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(2deg); }
+}
+.animate-float-soft { animation: float-soft 5s ease-in-out infinite; }
+
+/* ===== REDUCE MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    .animate-fade-in-up,
+    .animate-fade-in,
+    .animate-rocket-fly,
+    .animate-spin-slow,
+    .animate-spin-slower,
+    .animate-blink,
+    .animate-twinkle,
+    .animate-float-soft,
+    .marquee-track {
+        animation: none !important;
+    }
+}
