@@ -19,7 +19,9 @@ Route::prefix('student')->name('student.')->group(function () {
     Route::get('/kelas/{slug}/kuis/{quiz}/play', fn($slug, $quiz) => view('student.course.quiz-play'))->name('quiz.play');
     Route::get('/kelas/{slug}/kuis/{quiz}/result', fn($slug, $quiz) => view('student.course.quiz-result'))->name('quiz.result');
 
-    Route::get('/kelas/{slug}/diskusi', fn($slug) => view('student.dashboard'))->name('discussion.index');
+    Route::get('/kelas/{slug}/diskusi', fn($slug) => view('student.discussion.index'))->name('discussion.index');
+    Route::get('/kelas/{slug}/diskusi/create', fn($slug) => view('student.discussion.create'))->name('discussion.create');
+    Route::get('/kelas/{slug}/diskusi/{thread}', fn($slug, $thread) => view('student.discussion.show'))->name('discussion.show');
 
     Route::get('/sertifikat', fn() => view('student.dashboard'))->name('certificate.index');
     Route::get('/profil', fn() => view('student.dashboard'))->name('profile');
