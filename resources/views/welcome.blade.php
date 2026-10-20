@@ -5,10 +5,10 @@
 @section('content')
 
     {{-- HERO --}}
-    <x-hero />
+    <x-welcome.hero />
 
     {{-- MARQUEE --}}
-    <x-marquee :items="[
+    <x-welcome.marquee :items="[
         'Fisika Inti', 'Fisika Komputasi', 'Fisika Medis', 'Geofisika',
         'Fisika Material', 'Astrofisika', 'Biofisika', 'Fisika Instrumentasi'
     ]" />
@@ -16,7 +16,7 @@
     {{-- FITUR --}}
     <section id="fitur" class="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900">
         <div class="max-w-7xl mx-auto">
-            <x-section-header
+            <x-ui.section-header
                 number="01"
                 label="01 — FITUR"
                 title="Kenapa Nabla Fisika?"
@@ -36,7 +36,7 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 @foreach ($features as $i => [$icon, $title, $desc])
-                    <x-feature-card :index="$i" :icon="$icon" :title="$title" :description="$desc" />
+                    <x-welcome.feature-card :index="$i" :icon="$icon" :title="$title" :description="$desc" />
                 @endforeach
             </div>
         </div>
@@ -52,7 +52,7 @@
     {{-- KATALOG --}}
     <section id="katalog" class="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-100/60 dark:bg-slate-950">
         <div class="max-w-7xl mx-auto">
-            <x-section-header
+            <x-ui.section-header
                 number="02"
                 label="02 — KATALOG"
                 title="Kelas Populer"
@@ -71,7 +71,7 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 @foreach ($courses as $i => $c)
-                    <x-course-card
+                    <x-domain.course-card
                         :index="$i"
                         :title="$c['title']"
                         :description="$c['desc']"
@@ -102,7 +102,7 @@
         </div>
 
         <div class="max-w-7xl mx-auto relative">
-            <x-section-header
+            <x-ui.section-header
                 number="03"
                 label="03 — ALUR"
                 title="Cara Kerja"
@@ -275,7 +275,7 @@
             {{-- Step cards --}}
             <div class="reveal reveal-delay-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 relative">
                 @foreach ($steps as [$num, $icon, $title, $desc])
-                    <x-step-card :number="$num" :icon="$icon" :title="$title" :description="$desc" />
+                    <x-welcome.step-card :number="$num" :icon="$icon" :title="$title" :description="$desc" />
                 @endforeach
             </div>
         </div>
@@ -288,7 +288,7 @@
         </div>
 
         <div class="max-w-7xl mx-auto relative">
-            <x-section-header
+            <x-ui.section-header
                 number="04"
                 label="04 — TESTIMONI"
                 title="Kata Mereka"
@@ -306,7 +306,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                 @foreach ($testimonials as $i => [$name, $role, $quote, $initial, $rotate])
-                    <x-testimonial-card
+                    <x-welcome.testimonial-card
                         :index="$i"
                         :name="$name"
                         :role="$role"
@@ -321,13 +321,13 @@
 
     {{-- CTA --}}
     <section class="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900">
-        <x-cta />
+        <x-welcome.cta />
     </section>
 
     {{-- FAQ --}}
     <section id="faq" class="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-100/60 dark:bg-slate-950">
         <div class="max-w-3xl mx-auto">
-            <x-section-header
+            <x-ui.section-header
                 number="05"
                 label="05 — FAQ"
                 title="Pertanyaan Umum"
@@ -345,7 +345,7 @@
             @endphp
             <div class="space-y-2.5 sm:space-y-3">
                 @foreach ($faqs as $i => [$q, $a])
-                    <x-faq-item :index="$i" :number="str_pad($i + 1, 2, '0', STR_PAD_LEFT)" :question="$q" :answer="$a" />
+                    <x-welcome.faq-item :index="$i" :number="str_pad($i + 1, 2, '0', STR_PAD_LEFT)" :question="$q" :answer="$a" />
                 @endforeach
             </div>
         </div>
