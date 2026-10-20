@@ -16,6 +16,8 @@ Route::prefix('student')->name('student.')->group(function () {
     Route::get('/kelas/{slug}/belajar', fn($slug) => view('student.course.learn'))->name('course.learn');
 
     Route::get('/kelas/{slug}/kuis/{quiz}', fn($slug, $quiz) => view('student.course.quiz-show'))->name('quiz.show');
+    Route::get('/kelas/{slug}/kuis/{quiz}/play', fn($slug, $quiz) => view('student.course.quiz-play'))->name('quiz.play');
+    Route::get('/kelas/{slug}/kuis/{quiz}/result', fn($slug, $quiz) => view('student.course.quiz-result'))->name('quiz.result');
 
     Route::get('/kelas/{slug}/diskusi', fn($slug) => view('student.dashboard'))->name('discussion.index');
 
