@@ -151,8 +151,8 @@
         </div>
     </div>
 
-    {{-- ============ DETAIL JAWABAN (REVIEW) ============ --}}
-    <div class="pt-4">
+        {{-- ============ DETAIL JAWABAN (REVIEW) ============ --}}
+        <div class="pt-4">
         <div class="flex items-center justify-between mb-4 px-2">
             <h2 class="text-xl font-bold text-slate-800 dark:text-slate-200">Detail Jawaban</h2>
             <span class="text-sm text-slate-500">{{ count($review) }} Soal Ditampilkan</span>
@@ -192,32 +192,28 @@
                     <div class="p-4 sm:p-5 border-t border-slate-100 dark:border-slate-800/50 bg-slate-50 dark:bg-slate-950/30">
                         <p class="text-sm sm:text-base text-slate-800 dark:text-slate-200 mb-4 leading-relaxed">{{ $item['question'] }}</p>
                         
-                        <div class="space-y-2 mb-6">
+                        <div class="space-y-2">
                             @foreach($item['options'] as $key => $text)
                                 @php
                                     $isUser = $item['user_answer'] === $key;
-                                    $isCorrect = $item['correct_answer'] === $key;
                                     
-                                    // Logika Warna Pilihan
+                                    // Logika Warna Pilihan (Hanya menandai pilihan user)
                                     $bgClass = 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800';
                                     $textClass = 'text-slate-600 dark:text-slate-400';
                                     $icon = '';
                                     
-                                    if ($isUser && $isCorrect) {
-                                        // User menjawab benar
-                                        $bgClass = 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-300 dark:border-emerald-800';
-                                        $textClass = 'text-emerald-800 dark:text-emerald-300 font-semibold';
-                                        $icon = '<svg class="w-4 h-4 text-emerald-500 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>';
-                                    } elseif ($isUser && !$isCorrect) {
-                                        // User menjawab salah
-                                        $bgClass = 'bg-rose-50 dark:bg-rose-900/20 border-rose-300 dark:border-rose-800';
-                                        $textClass = 'text-rose-800 dark:text-rose-300 font-semibold';
-                                        $icon = '<svg class="w-4 h-4 text-rose-500 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';
-                                    } elseif ($isCorrect && !$isUser) {
-                                        // Kunci jawaban (tapi bukan pilihan user)
-                                        $bgClass = 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-300 dark:border-emerald-800 border-dashed';
-                                        $textClass = 'text-emerald-800 dark:text-emerald-300 font-semibold';
-                                        $icon = '<span class="text-[10px] font-bold text-emerald-600 ml-auto uppercase tracking-wide">Kunci Jawaban</span>';
+                                    if ($isUser) {
+                                        if ($item['is_correct']) {
+                                            // User menjawab benar
+                                            $bgClass = 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-300 dark:border-emerald-800';
+                                            $textClass = 'text-emerald-800 dark:text-emerald-300 font-semibold';
+                                            $icon = '<svg class="w-4 h-4 text-emerald-500 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>';
+                                        } else {
+                                            // User menjawab salah
+                                            $bgClass = 'bg-rose-50 dark:bg-rose-900/20 border-rose-300 dark:border-rose-800';
+                                            $textClass = 'text-rose-800 dark:text-rose-300 font-semibold';
+                                            $icon = '<svg class="w-4 h-4 text-rose-500 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';
+                                        }
                                     }
                                 @endphp
                                 
@@ -228,16 +224,9 @@
                                 </div>
                             @endforeach
                         </div>
-
-                        {{-- Penjelasan --}}
-                        @if($item['explanation'])
-                            <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-900/50">
-                                <p class="text-xs font-bold text-blue-800 dark:text-blue-300 mb-1 flex items-center gap-1">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                    Pembahasan:
-                                </p>
-                                <p class="text-sm text-blue-700 dark:text-blue-300 leading-relaxed">{{ $item['explanation'] }}</p>
-                            </div>
+                    
+                        @if(!$item['is_correct'])
+                            <p class="mt-4 text-xs text-rose-500 italic">*Pelajari kembali materi untuk menemukan jawaban yang tepat.</p>
                         @endif
                     </div>
                 </details>
