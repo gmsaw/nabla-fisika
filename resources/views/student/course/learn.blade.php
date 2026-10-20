@@ -172,13 +172,14 @@
     {{-- ======================================================= --}}
     {{-- KONTEN UTAMA (Materi Belajar)                           --}}
     {{-- ======================================================= --}}
-    <div id="mainContent" class="layout-transition flex-1 min-w-0 w-full max-w-4xl mx-auto pt-8 lg:pt-0">
+    {{-- Jarak atas di HP diperkecil dari pt-8 menjadi pt-2 --}}
+    <div id="mainContent" class="layout-transition flex-1 min-w-0 w-full max-w-4xl mx-auto pt-2 sm:pt-8 lg:pt-0">
 
         {{-- Header Materi + Tombol Toggle 3 Garis di Atas --}}
-        <div class="mb-6 sm:mb-8 flex items-start gap-3.5">
+        <div class="mb-4 sm:mb-8 flex items-start gap-3">
             {{-- Tombol Buka Sidebar --}}
             <button id="toggleSidebarBtn"
-                    class="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-slate-800 dark:hover:text-blue-400 shadow-sm transition-all duration-200 active:scale-95 shrink-0 hidden mt-0.5"
+                    class="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-slate-800 dark:hover:text-blue-400 shadow-sm transition-all duration-200 active:scale-95 shrink-0 hidden mt-0.5"
                     title="Buka Daftar Modul" aria-label="Buka Daftar Modul">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -186,19 +187,19 @@
             </button>
 
             <div class="flex-1 min-w-0">
-                <div class="flex items-center gap-2 mb-2">
-                    <span class="px-2.5 py-1 rounded-md bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-[10px] font-bold uppercase tracking-wider">Modul 6</span>
+                <div class="flex items-center gap-2 mb-1.5">
+                    <span class="px-2 py-0.5 rounded-md bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-[10px] font-bold uppercase tracking-wider">Modul 6</span>
                     <span class="text-slate-400 dark:text-slate-600">•</span>
                     <span class="text-xs font-medium text-slate-500 dark:text-slate-400">45 Menit</span>
                 </div>
-                <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white leading-tight">
+                <h1 class="text-xl sm:text-3xl font-bold text-slate-900 dark:text-white leading-tight">
                     {{ $currentItem['title'] }}
                 </h1>
             </div>
         </div>
 
         {{-- Area Konten Artikel --}}
-        <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 sm:p-8 shadow-sm space-y-8">
+        <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-8 shadow-sm space-y-6 sm:space-y-8">
             <div class="prose prose-slate dark:prose-invert max-w-none">
                 <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm sm:text-base">
                     Selamat datang di Modul 6. Pada modul ini, kita akan mempelajari tentang <strong>Dinamika Rotasi</strong>.
@@ -250,7 +251,7 @@
         </article>
 
         {{-- Footer Navigasi Modul & Tombol Diskusi --}}
-        <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
             <div class="text-center sm:text-left flex-1">
                 <p class="text-sm font-bold text-slate-800 dark:text-slate-200">Sudah selesai membaca?</p>
                 <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Lanjut ke materi berikutnya atau tanyakan sesuatu di forum diskusi.</p>
