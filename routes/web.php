@@ -13,6 +13,11 @@ Route::prefix('student')->name('student.')->group(function () {
     Route::get('/katalog', fn() => view('student.catalog'))->name('catalog'); 
 
     Route::get('/kelas/{slug}', fn($slug) => view('student.course.show'))->name('course.learn');
+    Route::get('/kelas/{slug}/belajar', fn($slug) => view('student.course.learn'))->name('course.learn');
+
+    Route::get('/kelas/{slug}/kuis/{quiz}', fn($slug, $quiz) => view('student.course.quiz-show'))->name('quiz.show');
+
+    Route::get('/kelas/{slug}/diskusi', fn($slug) => view('student.dashboard'))->name('discussion.index');
 
     Route::get('/sertifikat', fn() => view('student.dashboard'))->name('certificate.index');
     Route::get('/profil', fn() => view('student.dashboard'))->name('profile');
