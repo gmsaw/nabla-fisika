@@ -7,6 +7,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// ============ STUDENT (dummy, tanpa auth) ============
+Route::prefix('student')->name('student.')->group(function () {
+    Route::get('/', fn() => view('student.dashboard'))->name('dashboard');
+    Route::get('/katalog', fn() => view('student.dashboard'))->name('catalog');   // sementara redirect dulu
+    Route::get('/sertifikat', fn() => view('student.dashboard'))->name('certificate.index');
+    Route::get('/profil', fn() => view('student.dashboard'))->name('profile');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
