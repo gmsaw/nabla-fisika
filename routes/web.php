@@ -10,7 +10,10 @@ Route::get('/', function () {
 // ============ STUDENT (dummy, tanpa auth) ============
 Route::prefix('student')->name('student.')->group(function () {
     Route::get('/', fn() => view('student.dashboard'))->name('dashboard');
-    Route::get('/katalog', fn() => view('student.dashboard'))->name('catalog');   // sementara redirect dulu
+    Route::get('/katalog', fn() => view('student.catalog'))->name('catalog'); 
+
+    Route::get('/kelas/{slug}', fn($slug) => view('student.course.show'))->name('course.learn');
+
     Route::get('/sertifikat', fn() => view('student.dashboard'))->name('certificate.index');
     Route::get('/profil', fn() => view('student.dashboard'))->name('profile');
 });
