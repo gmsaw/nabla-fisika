@@ -27,6 +27,18 @@ Route::prefix('student')->name('student.')->group(function () {
     Route::get('/profil', fn() => view('student.dashboard'))->name('profile');
 });
 
+// ============ ADMIN (Dummy Route) ============
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', fn() => view('admin.dashboard'))->name('dashboard');
+    
+    Route::get('/kelas', fn() => view('admin.course.index'))->name('course.index');
+    Route::get('/user', fn() => view('admin.user.index'))->name('user.index');
+    Route::get('/kelas/{id}', fn($id) => view('admin.course.show', ['id' => $id]))->name('course.show');
+    Route::get('/sertifikat', fn() => view('admin.certificate.index'))->name('certificate.index');
+    Route::get('/analytics', fn() => view('admin.analytics'))->name('analytics');
+    Route::get('/log', fn() => view('admin.log'))->name('log');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
