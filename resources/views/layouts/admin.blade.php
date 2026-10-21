@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#020617">
     <title>@yield('title', 'Admin Panel — Nabla Fisika')</title>
-    <link rel="icon" type="image/png" href="{{ asset('images/logo1.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logoweb.png') }}">
 
     <script>
         (() => {

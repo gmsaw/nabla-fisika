@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#020617">
     <title>@yield('title', 'Nabla Fisika — Platform Pembelajaran Fisika HIMAFI UNUD')</title>
 
-    <link rel="icon" type="image/png" href="{{ asset('images/logo1.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logoweb.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('images/logo1.png') }}">
 
     {{-- Pre-render dark mode --}}
