@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#020617">
     <meta name="color-scheme" content="light dark">
     <title>@yield('title', 'Dashboard — Nabla Fisika')</title>
-    <link rel="icon" type="image/png" href="{{ asset('images/logo1.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logoweb.png') }}">
 
     <script>
         (() => {
