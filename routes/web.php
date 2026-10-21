@@ -23,8 +23,8 @@ Route::prefix('student')->name('student.')->group(function () {
     Route::get('/kelas/{slug}/diskusi/create', fn($slug) => view('student.discussion.create'))->name('discussion.create');
     Route::get('/kelas/{slug}/diskusi/{thread}', fn($slug, $thread) => view('student.discussion.show'))->name('discussion.show');
 
-    Route::get('/sertifikat', fn() => view('student.dashboard'))->name('certificate.index');
-    Route::get('/profil', fn() => view('student.dashboard'))->name('profile');
+    Route::get('/sertifikat', fn() => view('student.certificate.index'))->name('certificate.index');
+    Route::get('/profil', fn() => view('student.profile'))->name('profile');
 });
 
 // ============ ADMIN (Dummy Route) ============
@@ -55,6 +55,10 @@ Route::prefix('lecturer')->name('lecturer.')->group(function () {
     Route::get('/diskusi', fn() => view('lecturer.discussion.index'))->name('discussion.index');
     Route::get('/diskusi/{thread}', fn($thread) => view('lecturer.discussion.show', ['thread' => $thread]))->name('discussion.show');
 });
+
+// Halaman Publik Verifikasi Sertifikat
+Route::get('/verifikasi', fn() => view('certificate.verify'))->name('certificate.verify.form');
+Route::get('/verifikasi/{id}', fn($id) => view('certificate.verify'))->name('certificate.verify');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
