@@ -15,17 +15,22 @@
         </div>
 
         <div class="flex items-center gap-2 sm:gap-3">
-            <button id="themeToggle" aria-label="Toggle dark mode"
+            <button onclick="document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');" aria-label="Toggle dark mode"
                     class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition min-w-[40px] min-h-[40px] flex items-center justify-center">
-                <svg id="iconSun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                
+                <!-- Ikon Matahari (Akan muncul di Dark Mode) -->
+                <svg id="iconSun" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
                 </svg>
-                <svg id="iconMoon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                
+                <!-- Ikon Bulan (Akan muncul di Light Mode) -->
+                <svg id="iconMoon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
                 </svg>
             </button>
+
             <a href="{{ route('login') ?? '#' }}" class="hidden sm:inline-block px-3 lg:px-4 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition">Masuk</a>
             <a href="{{ route('register') ?? '#' }}" class="px-3 sm:px-4 py-2 rounded-lg bg-blue-600 text-white text-xs sm:text-sm font-semibold hover:bg-blue-700 transition whitespace-nowrap">
                 Daftar Gratis
@@ -51,4 +56,5 @@
             <a href="{{ route('login') ?? '#' }}" class="sm:hidden px-3 py-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition text-sm font-medium">Masuk</a>
         </div>
     </div>
+</header>
 </header>

@@ -27,12 +27,17 @@
 
     @stack('head')
 </head>
-<body class="bg-slate-50 dark:bg-[#0f172a] text-slate-800 dark:text-slate-100 antialiased font-sans transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased font-sans transition-colors duration-300">
 
     @include('layouts.partials.navbar')
 
     <main>
-        {{ $slot ?? '' }}
+          {{-- Hanya render $slot jika variabelnya benar-benar ada (untuk halaman login/register) --}}
+        @if (isset($slot))
+            {{ $slot }}
+        @endif
+
+        {{-- Ini untuk halaman yang pakai @extends (Landing Page, dll) --}}
         @yield('content')
     </main>
 
@@ -40,21 +45,5 @@
 
     @stack('scripts')
     
-    {{-- Script Toggle Theme --}}
-    <script>
-        function toggleTheme() {
-            const root = document.documentElement;
-            const isDark = root.classList.contains('dark');
-            
-            if (isDark) {
-                root.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                root.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            }
-            console.log("Tema berhasil diubah!");
-        }
-    </script>
 </body>
 </html>
