@@ -1,8 +1,8 @@
 <x-guest-layout>
-    <div class="w-full max-w-md mx-auto pt-32 pb-16">
+    <div class="w-full max-w-md mx-auto pt-32 pb-16 px-8">
         
         {{-- Judul --}}
-        <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-8">
             Selamat Datang Kembali,
         </h2>
 
@@ -39,7 +39,7 @@
             </div>
 
             <!-- Ingat Saya & Lupa Password -->
-            <div class="flex flex-col gap-3 pt-2">
+            <div class="flex flex-col gap-5">
                 <label for="remember_me" class="inline-flex items-center cursor-pointer">
                     <input id="remember_me" type="checkbox" class="w-5 h-5 rounded border-slate-300 dark:border-slate-600 text-blue-600 shadow-sm focus:ring-blue-500 dark:bg-transparent" name="remember">
                     <span class="ml-3 text-lg text-slate-900 dark:text-white">Ingat Saya</span>
@@ -55,7 +55,7 @@
             </div>
 
             <!-- Tombol Masuk -->
-            <button type="submit" class="w-full py-4 px-4 rounded-full shadow-sm text-lg font-bold text-slate-900 bg-white hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white transition-all dark:focus:ring-offset-slate-900 mt-4 border border-slate-200">
+            <button type="submit" class="w-full py-4 px-4 rounded-3xl shadow-sm text-lg font-bold text-slate-50 bg-[#1f2b38] hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white transition-all dark:focus:ring-offset-slate-900 mt-4 border border-slate-900">
                 Masuk
             </button>
         </form>
@@ -68,14 +68,14 @@
         </div>
 
         <!-- Tombol HIMAFI -->
-        <a href="#" class="relative w-full flex items-center justify-center py-3 px-4 rounded-full border border-slate-300 dark:border-slate-700 bg-transparent hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+        <a href="#" class="relative w-full flex items-center justify-center py-3 px-4 rounded-3xl border border-slate-300 dark:border-slate-700 bg-transparent hover:bg-slate-50 dark:hover:bg-slate-800 transition">
             {{-- Logo di pojok kiri menggunakan absolute --}}
             <div class="absolute left-4 w-8 h-8 rounded-full overflow-hidden flex-shrink-0 bg-white">
                 <img src="{{ asset('images/logo_himafi.png') }}" alt="HIMAFI" class="w-9 h-9 object-cover">
             </div>
             
             {{-- Teks tetap di tengah --}}
-            <span class="text-lg font-bold text-slate-900 dark:text-white">Masuk dengan HIMAFI</span>
+            <span class="text-lg pl-6 font-bold text-slate-900 dark:text-white">Masuk dengan HIMAFI</span>
         </a>
 
     </div>
