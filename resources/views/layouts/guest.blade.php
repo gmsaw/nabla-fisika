@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth dark">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -27,16 +27,23 @@
 
     @stack('head')
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased font-sans">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased font-sans transition-colors duration-300">
 
     @include('layouts.partials.navbar')
 
     <main>
+          {{-- Hanya render $slot jika variabelnya benar-benar ada (untuk halaman login/register) --}}
+        @if (isset($slot))
+            {{ $slot }}
+        @endif
+
+        {{-- Ini untuk halaman yang pakai @extends (Landing Page, dll) --}}
         @yield('content')
     </main>
 
     @include('layouts.partials.footer')
 
     @stack('scripts')
+    
 </body>
 </html>
